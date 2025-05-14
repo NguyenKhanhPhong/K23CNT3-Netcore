@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<NkpLesson04.Models.NkpBook>
+@{
+    ViewData["Title"] = "List Book";
+}
+
+<h1>Thông tin các cuốn sách</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>BookId</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(NkpBook nkpItem in Model)
+        {
+            <tr>
+                <td>@nkpItem.NkpId</td>
+                <td>@nkpItem.NkpTitle</td>
+                <td>@nkpItem.NkpDescription</td>
+                <td>
+                    <img src="@nkpItem.NkpImage" alt="@nkpItem.NkpTitle" style="width:100px; height:150px" />
+                   </td>
+                <td>@nkpItem.NkpPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
