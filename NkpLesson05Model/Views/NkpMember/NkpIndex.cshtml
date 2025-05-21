@@ -1,0 +1,31 @@
+﻿@model IEnumerable<NkpLesson05Model.Models.DataModels.NkpMember>;
+@{
+    ViewData["Title"] = "NkpIndex";
+}
+
+<h1>Danh sách member</h1>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Member Id </th>
+            <th>Member UserName </th>
+            <th>Member Password </th>
+            <th>Member FullName </th>
+            <th>Member Email </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var nkpItem in Model)
+        {
+            <tr>
+                <td>@nkpItem.NkpMemberId</td>
+                <td>@nkpItem.NkpUserName</td>
+                <td>@nkpItem.NkpPassword</td>
+                <td>@nkpItem.NkpFullName</td>
+                <td>@nkpItem.NkpEmail</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
