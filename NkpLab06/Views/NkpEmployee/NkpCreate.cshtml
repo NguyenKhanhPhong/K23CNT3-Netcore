@@ -1,0 +1,39 @@
+﻿@model NkpLab06.Models.NkpEmployee
+
+@{
+	ViewData["Title"] = "thêm mới nhân viên";
+}
+<div class="container mt-4"
+	<h2 class="mb-4">@ViewData["Title"]</h2>
+
+	<form asp-action="NkpCreate" method="post">
+		<div class="mb-3">
+			<label class="form-label">Họ tên</label>
+			<input asp-for="NkpName" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Ngày sinh</label>
+			<input asp-for="NkpBirthDay" type="date" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Email</label>
+			<input asp-for="NkpEmail" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Số điện thoại</label>
+			<input asp-for="NkpPhone" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Lương</label>
+			<input asp-for="NkpSalary" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Trạng thái</label>
+			<select asp-for="NkpStatus" class="form-select">
+				<option value="true">Đang làm</option>
+				<option value="false">Nghỉ làm</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-success">Lưu lại</button>
+		<a asp-action="NkpIndex" class="btn btn-secondary">Quay lại</a>
+	</form>

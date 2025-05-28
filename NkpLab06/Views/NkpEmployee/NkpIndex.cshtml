@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NkpLab06.Models.NkpEmployee>
+@{
+    ViewData["Title"] = "NkpIndex";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="text-center mb-4">Danh sách nhân viên</h2>
+        <a href="/NkpEmployee/NkpCreate" class="btn btn-primary">Thêm mới</a>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Email</th>
+                <th>Điện thoại</th>
+                <th>Lương</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nkpemp in Model)
+            {
+                <tr>    
+                    <td class="text-center">@nkpemp.NkpId</td>
+                    <td>@nkpemp.NkpName</td>
+                    <td>@nkpemp.NkpBirthDay.ToString("dd/MM/yyyy")</td>
+                    <td>@nkpemp.NkpEmail</td>
+                    <td>@nkpemp.NkpPhone</td>
+                    <td class="text-end">@nkpemp.NkpSalary.ToString("N0") đ</td>
+                    <td class="text-center">
+                        @if (nkpemp.NkpStatus)
+                        {
+                            <span class="badge bg-success">Đang làm</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Nghỉ việc</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
