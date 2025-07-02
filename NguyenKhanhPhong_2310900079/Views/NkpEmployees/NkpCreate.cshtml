@@ -1,0 +1,56 @@
+﻿﻿@model NguyenKhanhPhong_2310900079.NkpEmployee
+
+@{
+    ViewData["Title"] = "Thêm nhân viên";
+}
+
+<div class="card shadow-sm mx-auto mt-4" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+        <h4 class="text-center my-2">@ViewData["Title"]</h4>
+    </div>
+
+    <div class="card-body">
+        <form asp-action="NkpCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="NkpEmpName" class="form-label fw-semibold"></label>
+                <input asp-for="NkpEmpName" class="form-control" placeholder="Nhập tên nhân viên" />
+                <span asp-validation-for="NkpEmpName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NkpEmpLevel" class="form-label fw-semibold"></label>
+                <input asp-for="NkpEmpLevel" class="form-control" placeholder="Nhập cấp bậc" />
+                <span asp-validation-for="NkpEmpLevel" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NkpEmpStartDate" class="form-label fw-semibold"></label>
+                <input asp-for="NkpEmpStartDate" class="form-control" type="date" />
+                <span asp-validation-for="NkpEmpStartDate" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NkpEmpStatus" class="form-label fw-semibold"></label>
+                <select asp-for="NkpEmpStatus" class="form-select">
+                    <option value="">-- Chọn trạng thái --</option>
+					<option value="true"> Hiển thị</option>
+                    <option value="false">Tạm ẩn</option>
+                </select>
+                <span asp-validation-for="NkpEmpStatus" class="text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">💾 Lưu</button>
+                <a asp-action="NkpIndex" class="btn btn-secondary ms-2">⬅️ Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

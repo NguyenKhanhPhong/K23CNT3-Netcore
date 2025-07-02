@@ -1,0 +1,49 @@
+﻿﻿@model IEnumerable<NguyenKhanhPhong_2310900079.Models.NkpEmployee>
+
+@{
+    ViewData["Title"] = "Danh sách nhân viên";
+}
+
+<h2 class="text-center my-4">@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="NkpCreate" class="btn btn-success">➕ Thêm mới</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().NkpEmpName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().NkpEmpLevel)</th>
+            <th>@Html.DisplayNameFor(model => model.First().NkpEmpStartDate)</th>
+            <th>@Html.DisplayNameFor(model => model.First().NkpEmpStatus)</th>
+            <th class="text-center">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NkpEmpName</td>
+                <td>@item.NkpEmpLevel</td>
+                <td>@(item.NkpEmpStartDate?.ToString("dd/MM/yyyy"))</td>
+                <td>
+                    @if (item.NkpEmpStatus == true)
+                    {
+                        <span class="badge bg-success">Hiển thị</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Tạm khóa</span>
+                    }
+                </td>
+
+                <td class="text-center">
+                    <a asp-action="NkpDetails" asp-route-nkpid="@item.NkpEmpId" class="btn btn-info btn-sm">🔍 Xem</a>
+                    <a asp-action="NkpEdit" asp-route-nkpid="@item.NkpEmpId" class="btn btn-warning btn-sm">✏️ Sửa</a>
+                    <a asp-action="NkpDelete" asp-route-nkpid="@item.NkpEmpId" class="btn btn-danger btn-sm">🗑️ Xoá</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
